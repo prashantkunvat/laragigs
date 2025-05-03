@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     && docker-php-ext-install pdo pdo_mysql zip
 
+    # Copy custom vhost.conf into the apache sites
+COPY vhost.conf /etc/apache2/sites-available/000-default.conf
+
 # Enable Apache Rewrite Module
 RUN a2enmod rewrite
 
